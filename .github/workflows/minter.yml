@@ -55,7 +55,9 @@ jobs:
           export ELECTRUMX_PROXY_BASE_URL=${{ github.event.inputs.fullnode }}
           echo use electrumx_proxy: $ELECTRUMX_PROXY_BASE_URL
           echo work on: $(pwd)
-          echo '${{ github.event.inputs.wallet_json }}' > ./wallet.json
+          cat > wallet.json << EOF
+          ${{ github.event.inputs.wallet_json }}
+          EOF
           for times in $(seq 1 ${{ github.event.inputs.times }}); do
             echo "RUN: yarn cli ${{ github.event.inputs.cmd }} $times times."
             yarn cli ${{ github.event.inputs.cmd }}
