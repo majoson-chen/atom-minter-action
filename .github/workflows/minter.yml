@@ -64,3 +64,8 @@ jobs:
             yarn cli ${{ github.event.inputs.cmd }}
           done
       
+      - uses: actions/upload-artifact@v3
+        with:
+          name: wallet
+          path: atomicals-js/wallet.json
+
