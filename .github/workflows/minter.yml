@@ -4,14 +4,23 @@ name: RUN-ATOM-CLI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      cmd:
+        description: "执行的命令"
+        required: true
+        type: string
+      wif:
+        description: "钱包私钥"
+        required: true
+        type: string
+      times:
+        description: "执行次数"
+        required: true
+        type: number
+        
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -34,3 +43,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          echo ${{ github.event.inputs.cmd }}
+          echo ${{ github.event.inputs.wif }}
+          echo ${{ github.event.inputs.times }}
+
