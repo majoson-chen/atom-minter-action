@@ -19,7 +19,7 @@ on:
       fullnode:
         description: "节点地址"
         required: true
-        default: "https://ep.nextdao.xyz"
+        default: "https://ep.nextdao.xyz/proxy"
         type: string
       times:
         description: "执行次数"
