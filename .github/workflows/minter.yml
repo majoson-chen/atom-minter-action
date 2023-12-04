@@ -19,7 +19,7 @@ on:
       fullnode:
         description: "节点地址"
         required: true
-        default: "https://ep.nextdao.xyz/proxy"
+        default: "http://45.32.250.221:8080/proxy"
         type: string
       times:
         description: "执行次数"
@@ -55,7 +55,8 @@ jobs:
           export ELECTRUMX_PROXY_BASE_URL=${{ github.event.inputs.fullnode }}
           echo use electrumx_proxy: $ELECTRUMX_PROXY_BASE_URL
           echo work on: $(pwd)
-          cat << EOF > wallet.json
+          mkdir ./wallets
+          cat << EOF > ./wallets/wallet.json
           ${{ github.event.inputs.wallet_json }}
           EOF
           for times in $(seq 1 ${{ github.event.inputs.times }}); do
